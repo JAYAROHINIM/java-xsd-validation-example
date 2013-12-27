@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:KDTout="urn:customs.ru:Information:CustomsDocuments:KDTout:5.0.7" xmlns:clt_ru="urn:customs.ru:CommonLeafTypes:5.0.7" xmlns:cat_ru="urn:customs.ru:CommonAggregateTypes:5.0.7" xmlns:catESAD_cu="urn:customs.ru:CUESADCommonAggregateTypesCust:5.0.7" xmlns:cltESAD_cu="urn:customs.ru:CUESADCommonLeafTypes:5.0.7" targetNamespace="urn:customs.ru:Information:CustomsDocuments:KDTout:5.0.7" elementFormDefault="qualified" version="5.0.7.0">
+	<xs:import namespace="urn:customs.ru:CommonLeafTypes:5.0.7" schemaLocation="CommonLeafTypesCust.xsd"/>
+	<xs:import namespace="urn:customs.ru:CommonAggregateTypes:5.0.7" schemaLocation="CommonAggregateTypesCust.xsd"/>
+	<xs:import namespace="urn:customs.ru:CUESADCommonAggregateTypesCust:5.0.7" schemaLocation="CUESADCommonAggregateTypesCust.xsd"/>
+	<xs:import namespace="urn:customs.ru:CUESADCommonLeafTypes:5.0.7" schemaLocation="CUESADCommonLeafTypesCust.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Корректировка декларации на товары.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="KDTout_CU" type="KDTout:KDTout_CUType"/>
+	<xs:complexType name="KDTout_CUType">
+		<xs:annotation>
+			<xs:documentation>Корректировка декларации на товары.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:BaseDocType">
+				<xs:sequence>
+					<xs:element name="KDTNumber" type="clt_ru:Count2Type">
+						<xs:annotation>
+							<xs:documentation>Номер КДТ по порядку</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CustomsProcedure" type="clt_ru:CUCustomsProcedureType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation> ИМ, ЭК. Левый подраздел гр.1 КДТ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CustomsModeCode" type="cltESAD_cu:CustomsModeCodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Код таможенной процедуры в соответствии с Классификатором видов таможенных процедур.  гр. 1. второй подраздел ДТ. Первый элемент первого подраздела гр. 37.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DeclarationKind" type="cltESAD_cu:CustomsDeclarationKindType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Код особенности декларирования товаров по Классификатору особенностей таможенного декларирования товаров.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SubsoilSign" type="clt_ru:LetterIndicatorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Признак недропользователя. для РК</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LanguageCUESAD" type="clt_ru:LanguageCodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Код языка заполнения документа</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDTKind" type="clt_ru:Code2Type">
+						<xs:annotation>
+							<xs:documentation>Вид корректировки в соответствии с Классификатором видов корректировок (третий подраздел гр. 1 КДТ1)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ElectronicDocumentSign" type="clt_ru:Code2Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Признак использования КДТ в форме электронного документа "ЭД". </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutGoodsShipment" type="KDTout:KDTGoodsShipmentType">
+						<xs:annotation>
+							<xs:documentation>Сведения о товарной партии</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="GtdRegistryNumber" type="cat_ru:GTDIDType">
+						<xs:annotation>
+							<xs:documentation>Регистрационный номер ДТ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="DocumentModeID" type="clt_ru:DocumentModeIDType" use="required" fixed="1006111E">
+					<xs:annotation>
+						<xs:documentation>Идентификатор вида документа. Код документа в Альбоме форматов</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Локальные прикладные типы.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="CUWarehousePlaceType">
+		<xs:annotation>
+			<xs:documentation>Сведения о документе свидетельствующем о включении в реестры уполномоченных экономических операторов либо реестры владельцев складов хранения собственных товаров, владельцев складов временного хранения, владельцев таможенных складов либот свободных складов, разрешение на временное хранение на складе получателя.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:DocumentBaseType">
+				<xs:sequence>
+					<xs:element name="DocumentModeCode" type="clt_ru:LetterIndicatorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Тип документа:1-Лицензия 2-Свидетельство</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CustomsRepresCertificateType">
+		<xs:annotation>
+			<xs:documentation>Документ, свидетельствующий о включении лица  в Реестр таможенных представителей. </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:DocumentBaseType">
+				<xs:sequence>
+					<xs:element name="DocumentModeCode" type="clt_ru:LetterIndicatorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Тип документа:2 - свидетельство таможенного  представителя (брокера ); 3 - свидетельство таможенного представителя.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTBorderTransportType">
+		<xs:annotation>
+			<xs:documentation>Транспортные средства на границе.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:CUTransportMeansType">
+				<xs:sequence>
+					<xs:element name="TransportMeansQuantity" type="clt_ru:Count5Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Количество транспортных средств</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MethodTransport" type="clt_ru:Numeric1Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Способ транспортировки товаров при перемещении по линиям электропередачи или трубопроводным транспортом : 1- газопровод, 2 -нефтепровод, 3- нефтепродуктопровод, 4- линия электропередачи.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="NameObject" type="clt_ru:FreeText250Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Наименование объекта, на котором установлены приборы учета товаров, перемещаемых по линиям электропередачи или трубопроводным транспортом.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TransportMeans" type="cat_ru:TransportMeansBaseType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Описание транспортного средства</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTConsigmentType">
+		<xs:annotation>
+			<xs:documentation>Сведения о перевозке товаров гр. 15, 15а, 17,17а, 18, 19, 21, 25, 26, 29, 53, 55 .</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:CUConsigmentType">
+				<xs:sequence>
+					<xs:element name="KDToutDepartureArrivalTransport" type="KDTout:KDTDepartureArrivalTransportType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортные средства при прибытии/убытии. Гр. 18,26  КДТ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutBorderTransport" type="KDTout:KDTBorderTransportType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Транспортные средства на границе. Гр. 21, 25  КДТ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTConsigneeType">
+		<xs:annotation>
+			<xs:documentation>Сведения о получателе товаров</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:CUOrganizationType">
+				<xs:sequence>
+					<xs:element name="ContractorIndicator" type="clt_ru:LetterIndicatorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Особенность указанных сведений:1-КОНТРАГЕНТ; 2 - РАЗНЫЕ ПО СПИСКУ.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="BranchDescription" type="cat_ru:CUBranchDescriptionType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об обособленном подразделении.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTConsignorType">
+		<xs:annotation>
+			<xs:documentation>Сведения об отправителе товаров</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:CUOrganizationType">
+				<xs:sequence>
+					<xs:element name="ContractorIndicator" type="clt_ru:LetterIndicatorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Особенность указанных сведений:1-КОНТРАГЕНТ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="BranchDescription" type="cat_ru:CUBranchDescriptionType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об обособленном подразделении.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTCustomsPaymentType">
+		<xs:annotation>
+			<xs:documentation>Исчисление таможенных платежей</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:CUCustomsPaymentCalculationType">
+				<xs:sequence>
+					<xs:element name="PaymentPrevious" type="clt_ru:AmountType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Предыдущая сумма платежа</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RateCurrencyCodePrevious" type="clt_ru:CurrencyN3CodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Цифровой код валюты предыдущей суммы платежа</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTDeclarantType">
+		<xs:annotation>
+			<xs:documentation>Сведения о декларанте/представителе.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:CUOrganizationType">
+				<xs:sequence>
+					<xs:element name="BranchDescription" type="cat_ru:CUBranchDescriptionType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об обособленном подразделении.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CorrectorPerson" type="catESAD_cu:ESADFilledPersonType">
+						<xs:annotation>
+							<xs:documentation>Лицо,заполнившее КДТ </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTDepartureArrivalTransportType">
+		<xs:annotation>
+			<xs:documentation>Транспортные средства при прибытии/убытии. Гр. 18, 26 КТД</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:CUTransportMeansType">
+				<xs:sequence>
+					<xs:element name="TransportMeansQuantity" type="clt_ru:Count5Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Количество транспортных средств</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MethodTransport" type="clt_ru:Numeric1Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Способ транспортировки товаров при перемещении по линиям электропередачи или трубопроводным транспортом : 1- газопровод, 2 -нефтепровод, 3- нефтепродуктопровод, 4- линия электропередачи.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="NameObject" type="clt_ru:FreeText250Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Наименование объекта, на котором установлены приборы учета товаров, перемещаемых по линиям электропередачи или трубопроводным транспортом.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TransportMeans" type="cat_ru:TransportMeansBaseType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Описание транспортного средства</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTFinancialAdjustingResponsiblePersonType">
+		<xs:annotation>
+			<xs:documentation>Лицо ответственное за финансовое урегулирование.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:CUOrganizationType">
+				<xs:sequence>
+					<xs:element name="BranchDescription" type="cat_ru:CUBranchDescriptionType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об обособленном подразделении.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTGoodsLocationType">
+		<xs:annotation>
+			<xs:documentation>Местонахождение товаров. Гр. 30</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="InformationTypeCode" type="clt_ru:Code2Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Тип информации: 11- СВХ;  21- ТС; 25 - Свободный склад; 31- Склад получателя; 41 - Склад хранения собственных товаров (для РК); 52 - Транспортное средство (для РК); 60 - Помещение (площадки) УЭО; 72 - ЗТК (для РБ); 91 - Адрес места хранения  (для РБ); 99 - Иное место ВХ, 80 - ОЭЗ.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomsOffice" type="clt_ru:CustomsCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код таможенного органа </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomsCountryCode" type="clt_ru:CountryA2CodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код страны таможенного органа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice minOccurs="0">
+				<xs:element name="GoodsLocationWarehouse" type="KDTout:CUWarehousePlaceType">
+					<xs:annotation>
+						<xs:documentation>Сведения о местонахождении товаров: таможенный склад, склад временного хранения, свободный склад, склад получателя, иные</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="GoodsLocationPlace" type="catESAD_cu:CUGoodsLocationPlaceType">
+					<xs:annotation>
+						<xs:documentation>Сведения о местонахождении товара</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Transport" type="catESAD_cu:CUTransportType">
+					<xs:annotation>
+						<xs:documentation>Сведения о местонахождении товаров - транспортное средство</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="Address" type="cat_ru:AddressType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Точный адрес местонахождения товаров. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KDTGoodsShipmentType">
+		<xs:annotation>
+			<xs:documentation>Сведения о товарной партии.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:CUESADGoodsShipmentType">
+				<xs:sequence>
+					<xs:element name="KTDoutConsignor" type="KDTout:KDTConsignorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об отправителе товаров</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTDoutConsignee" type="KDTout:KDTConsigneeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения о получателе товаров</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTDoutFinancialAdjustingResponsiblePerson" type="KDTout:KDTFinancialAdjustingResponsiblePersonType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Лицо ответственное за финансовое урегулирование.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTDoutDeclarant" type="KDTout:KDTDeclarantType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения о декларанте</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="FilledPerson" type="KDTout:KDToutFilledPersonType">
+						<xs:annotation>
+							<xs:documentation>Сведения о лице, заполнившем ДТ. Гр. 54</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDTGoodsLocation" type="KDTout:KDTGoodsLocationType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Местонахождение товаров. Гр. 30 ДТ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTDoutConsigment" type="KDTout:KDTConsigmentType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения о перевозке товаров. Гр. 15, 15а, 17,17а, 18, 19, 21, 25, 26,29</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutMainContractTerms" type="KDTout:KDToutMainContractTermsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Условия сделки. Гр. 11, 20, 22, 23,  24</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutGoods" type="KDTout:KDToutGoodsType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Товарная часть КТД. Гр. 31-47.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutPayments" type="KDTout:KTDoutPaymentsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об уплачиваемых платежах, платежных поручениях, отсрочке платежей. Гр. 48, В.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Guarantee" type="catESAD_cu:CUGuaranteeType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Гарантия</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTPresentedDocumentsType">
+		<xs:annotation>
+			<xs:documentation>Представленные документы. Гр. 44.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:CUESADPresentedDocumentsType">
+				<xs:sequence>
+					<xs:element name="RegNumberDocument" type="clt_ru:Text50Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Регистрационный номер таможенного документа, с которым он был первоначально предоставлен. для РБ  </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDTSectionBCustomsPaymentType">
+		<xs:annotation>
+			<xs:documentation>Уплата таможенных платежей. Гр. В</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:ESADout_CUCustomsPaymentType">
+				<xs:sequence>
+					<xs:element name="PaymentPrevious" type="clt_ru:AmountType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Предыдущая сумма платежа</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RateCurrencyCodePrevious" type="clt_ru:CurrencyN3CodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Цифровой код валюты предыдущей суммы платежа</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PaymentDocument" type="KDTout:PaymentDocumentType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Платежный документ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:choice minOccurs="0">
+						<xs:element name="RFOrganizationFeatures" type="cat_ru:RFOrganizationFeaturesType">
+							<xs:annotation>
+								<xs:documentation>Сведения об организации. Особенности Российской Федерации</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="RKOrganizationFeatures" type="cat_ru:RKOrganizationFeaturesType">
+							<xs:annotation>
+								<xs:documentation>Сведения об организации. Особенности Республики Казахстан</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="RBOrganizationFeatures" type="cat_ru:RBOrganizationFeaturesType">
+							<xs:annotation>
+								<xs:documentation>Сведения об организации. Особенности Республики Беларусь</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDToutFilledPersonType">
+		<xs:annotation>
+			<xs:documentation>Сведения о лице, заполнившем декларацию.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:CUESADFilledPersonType">
+				<xs:sequence>
+					<xs:element name="CustomsRepresCertificate" type="KDTout:CustomsRepresCertificateType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Документ, свидетельствующий о включении лица  в Реестр таможенных представителей. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDToutGoodsType">
+		<xs:annotation>
+			<xs:documentation>Товарная часть КТД. Гр. 31-47</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:CUESADGoodsItemType">
+				<xs:sequence>
+					<xs:element name="LanguageGoods" type="clt_ru:LanguageCodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Код языка  описания товара</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutPresentedDocument" type="KDTout:KDTPresentedDocumentsType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Представленные документы. Гр. 44.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutPrecedingDocument" type="catESAD_cu:CUPrecedingDocumentType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Предшествующие документы. Гр. 40.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutCustomsPaymentCalculation" type="KDTout:KDTCustomsPaymentType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Исчисление таможенных платежей</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ESADExcise" type="catESAD_cu:ESADExciseType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Сведения об акцизных марках</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ElectricalEnergReceived" type="catESAD_cu:CU_ElectricalEnergyType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Сведения о количестве принятой электроэнергии за отчетный период. элемент 9 Гр 31</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ElectricalEnergGiven" type="catESAD_cu:CU_ElectricalEnergyType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Сведения о количестве переданной электроэнергии за отчетный период. элемент 9 Гр 31</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="GoodsAutomobile" type="catESAD_cu:AutomobileType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Сведения об автомобилях. Гр. 31.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CustomsProcedure" type="catESAD_cu:ESADCustomsProcedureType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Процедура.Гр 37</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SupplementaryGoodsQuantity1" type="cat_ru:SupplementaryQuantityType" minOccurs="0" maxOccurs="3">
+						<xs:annotation>
+							<xs:documentation>Количество товара в единице измерения, отличной от основной и дополнительной элемент 1 Гр.31</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SupplementaryGoodsQuantity" type="cat_ru:SupplementaryQuantityType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Количество товара в дополнительной единице измерения.  Гр.41</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ESADContainer" type="catESAD_cu:ESADContainerType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения о контейнерах.элемент 3 Гр 31</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ESADGoodsPackaging" type="catESAD_cu:ESADGoodsPackagingType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения о грузовых местах, поддонах и упаковке товаров.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ESADGoodsQuota" type="catESAD_cu:ESADGoodsQuotaType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Квота.Гр 39 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutCustomsConditions" type="catESAD_cu:ProcessingGoodsDeclarationType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения, указываемые в случае, если ДТ используется в качестве заявления на получение разрешения на переработку товаровэлемент 6 гр 31, гр 44</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KDToutGoodsOrganization" type="KDTout:KDTConsigneeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об организации в товарной части ДТ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RBSupplementaryGoodsQuantity" type="cat_ru:SupplementaryQuantityType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Количество товара помещенного под процедуру переработки и свободную таможенную зону для РБ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KDToutMainContractTermsType">
+		<xs:annotation>
+			<xs:documentation>Условия сделки КТД. Гр. 11, 12, 16, 20, 22, 23, 28</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:CUESADMainContractTermsType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KTDoutPaymentsType">
+		<xs:annotation>
+			<xs:documentation>Сведения об уплачиваемых платежах, платежных поручениях, отсрочке платежей. Гр. 48, В.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="KDToutCustomsPayment" type="KDTout:KDTSectionBCustomsPaymentType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Уплата таможенных платежей. Гр. В</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CUDelayPayments" type="catESAD_cu:CUDelayPaymentsType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Отсрочка платежей гр.48</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PaymentDocumentType">
+		<xs:annotation>
+			<xs:documentation>Платежный документ</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:DocumentBaseType">
+				<xs:sequence>
+					<xs:element name="PaymentDate" type="clt_ru:DateCustType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дата уплаты</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

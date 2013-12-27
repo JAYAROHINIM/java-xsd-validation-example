@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:KTSout_CU="urn:customs.ru:Information:CustomsDocuments:KTSout_CU:5.0.7" xmlns:catESAD_cu="urn:customs.ru:CUESADCommonAggregateTypesCust:5.0.7" xmlns:cltESAD_cu="urn:customs.ru:CUESADCommonLeafTypes:5.0.7" xmlns:cat_ru="urn:customs.ru:CommonAggregateTypes:5.0.7" xmlns:clt_ru="urn:customs.ru:CommonLeafTypes:5.0.7" xmlns:catEKTS_cu="urn:customs.ru:CUEKTSCommonAggregateTypes:5.0.7" targetNamespace="urn:customs.ru:Information:CustomsDocuments:KTSout_CU:5.0.7" elementFormDefault="qualified" version="5.0.7.0">
+	<xs:import namespace="urn:customs.ru:CUESADCommonAggregateTypesCust:5.0.7" schemaLocation="CUESADCommonAggregateTypesCust.xsd"/>
+	<xs:import namespace="urn:customs.ru:CUESADCommonLeafTypes:5.0.7" schemaLocation="CUESADCommonLeafTypesCust.xsd"/>
+	<xs:import namespace="urn:customs.ru:CommonAggregateTypes:5.0.7" schemaLocation="CommonAggregateTypesCust.xsd"/>
+	<xs:import namespace="urn:customs.ru:CommonLeafTypes:5.0.7" schemaLocation="CommonLeafTypesCust.xsd"/>
+	<xs:import namespace="urn:customs.ru:CUEKTSCommonAggregateTypes:5.0.7" schemaLocation="CUESADKTSCommonAggregateTypesCust.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Электронная копия формы корректировки таможенной стоимости и таможенных платежей. </xs:documentation>
+	</xs:annotation>
+	<xs:element name="KTSout_CU" type="KTSout_CU:KTSout_CUType"/>
+	<xs:complexType name="KTSout_CUType">
+		<xs:annotation>
+			<xs:documentation>Электронная копия формы корректировки таможенной стоимости и таможенных платежей. </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:BaseDocType">
+				<xs:sequence>
+					<xs:element name="DTDocumentID" type="clt_ru:DocumentIDType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Уникальный идентификатор ДТ.  Используется для привязки к ДТ при представлении КТС отдельно от ДТ.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DeclarationKind" type="cltESAD_cu:CustomsDeclarationKindType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Код особенности декларирования товаров по Классификатору особенностей таможенного декларирования товаров. Гр.7 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SubsoilSign" type="clt_ru:LetterIndicatorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Признак недропользователя. для РК</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTSNumber" type="clt_ru:Count2Type">
+						<xs:annotation>
+							<xs:documentation>Номер КТС по порядку</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CurrencyCode" type="clt_ru:CurrencyA3CodeType">
+						<xs:annotation>
+							<xs:documentation>Буквенный код национальной валюты в соответствии с Классификатором валют.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ElectronicDocumentSign" type="clt_ru:Code2Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Признак использования КТС в форме электронного документа. ЭД.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Adjustment" type="clt_ru:IndicatorType">
+						<xs:annotation>
+							<xs:documentation>Тип корректировки. 1- тип корректировки совпадает для всех товаров, 0 - не совпадает</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTSFillerPerson" type="KTSout_CU:KTSout_FilledPersonType">
+						<xs:annotation>
+							<xs:documentation>Сведения о лице, заполнившем КТС.гр.54</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTSout_CUGoodsShipment" type="KTSout_CU:KTSout_CUGoodsShipmentType">
+						<xs:annotation>
+							<xs:documentation>Сведения о товарной партии.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DTNumber" type="cat_ru:GTDIDType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Регистрационный номер ДТ. Используется для привязки к ДТ при представлении КТС отдельно от ДТ.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTSoutPaymentsReCalc" type="catEKTS_cu:KTSPaymentsReCalcType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Перерасчет платежей гр В</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTSCUConsignor" type="KTSout_CU:KTSCUConsignorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об отправителе товаров.(за исключением РФ) гр 2</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTSCUConsignee" type="KTSout_CU:KTSCUConsigneeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения о получателе товаров.(за исключением РФ) гр 8</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTSCUDeclarant" type="KTSout_CU:KTSCUDeclarantType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения о декларанте товаров.(за исключением РФ) гр 14</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="DocumentModeID" type="clt_ru:DocumentModeIDType" use="required" fixed="1006113E">
+					<xs:annotation>
+						<xs:documentation>Идентификатор вида документа (код документа по Альбому форматов)</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Локальные прикладные типы.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="CustomsRepresCertificateType">
+		<xs:annotation>
+			<xs:documentation>Документ, свидетельствующий о включении лица  в Реестр таможенных представителей. </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:DocumentBaseType">
+				<xs:sequence>
+					<xs:element name="DocumentModeCode" type="clt_ru:LetterIndicatorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Тип документа:2 - свидетельство таможенного  представителя (брокера ); 3 - свидетельство таможенного представителя.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KTSCUConsigneeType">
+		<xs:annotation>
+			<xs:documentation>Сведения о получателе товаров.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:CUOrganizationType">
+				<xs:sequence>
+					<xs:element name="ContractorIndicator" type="clt_ru:LetterIndicatorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Особенность указанных сведений:1-КОНТРАГЕНТ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="BranchDescription" type="cat_ru:CUBranchDescriptionType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об обособленном подразделении.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KTSCUConsignorType">
+		<xs:annotation>
+			<xs:documentation>Сведения об отправителе товаров.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:CUOrganizationType">
+				<xs:sequence>
+					<xs:element name="ContractorIndicator" type="clt_ru:LetterIndicatorType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Особенность указанных сведений:1-КОНТРАГЕНТ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="BranchDescription" type="cat_ru:CUBranchDescriptionType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об обособленном подразделении.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KTSCUDeclarantType">
+		<xs:annotation>
+			<xs:documentation>Сведения о декларанте товаров.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="cat_ru:CUOrganizationType">
+				<xs:sequence>
+					<xs:element name="BranchDescription" type="cat_ru:CUBranchDescriptionType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сведения об обособленном подразделении.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KTSoutPresentedDocumentsType">
+		<xs:annotation>
+			<xs:documentation>КТС. Представленные документы.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:CUESADPresentedDocumentsType">
+				<xs:sequence>
+					<xs:element name="RegNumberDocument" type="clt_ru:Text50Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Регистрационный номер таможенного документа, с которым он был первоначально предоставлен. для РБ  </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KTSout_CUGoodsItemType">
+		<xs:annotation>
+			<xs:documentation>КТС. Сведения о корректируемых товарах.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catEKTS_cu:KTSGoodsItemType">
+				<xs:sequence>
+					<xs:element name="KTSoutPresentedDocuments" type="KTSout_CU:KTSoutPresentedDocumentsType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>КТС. Представленные документы.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTSCustomsPaymentCalculation" type="catEKTS_cu:CUKTSCustomsPaymentCalculationType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>КТС. Исчисление платежей.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CustomsProcedure" type="catESAD_cu:ESADCustomsProcedureType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Процедура. гр 37</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="GoodsAutomobile" type="catESAD_cu:AutomobileType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Сведения об автомобилях. Гр. 31.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KTSout_CUGoodsShipmentType">
+		<xs:annotation>
+			<xs:documentation>КТС. Внешний формат. Сведения о товарной партии.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catEKTS_cu:KTSGoodsShipmentType">
+				<xs:sequence>
+					<xs:element name="KTSContractTerms" type="catEKTS_cu:KTSContractTermsType">
+						<xs:annotation>
+							<xs:documentation>КТС - Сведения об  условиях поставки, валюте и общей стоимости. (гр. 20, 22,23,24)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="KTSoutGoodsItem" type="KTSout_CU:KTSout_CUGoodsItemType" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>КТС. Сведения о корректируемом товаре.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KTSout_FilledPersonType">
+		<xs:annotation>
+			<xs:documentation>Сведения о лице, заполнившем декларацию</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="catESAD_cu:ESADFilledPersonType">
+				<xs:sequence>
+					<xs:element name="RegNumberDoc" type="clt_ru:DocumentNumberType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Исходящий номер регистрации документов в соответствии с системой (регламентом) учета исходящих документов декларанта или таможенного представителя  в Республике Беларусь и Республике Казахстан</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ExecutionDate" type="clt_ru:DateCustType">
+						<xs:annotation>
+							<xs:documentation>Дата составления КТС</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SecurityLabelCode" type="clt_ru:Code6Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Код защитной наклейки для РК</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="QualificationCertificate" type="clt_ru:Count6Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Номер квалификационного аттестата специалиста по таможенному оформлению. Для РБ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CustomsRepresCertificate" type="KTSout_CU:CustomsRepresCertificateType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Документ, свидетельствующий о включении лица  в Реестр таможенных представителей. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ContractRepresDecl" type="cat_ru:DocumentBaseType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Договор таможенного представителя с декларантом.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
